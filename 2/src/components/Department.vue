@@ -28,19 +28,19 @@ const childrenLevel = props.level + 1;
             </template>
         </Col>
         <Col>
-            {{ props.value.data['2020'] }}
+            {{ props.value.data['2020'] ?? '-' }}
         </Col>
         <Col>
-            {{ props.value.data['2021'] }}
+            {{ props.value.data['2021'] ?? '-' }}
         </Col>
         <Col>
-            {{ props.value.data['2022'] }}
+            {{ props.value.data['2022'] ?? '-' }}
         </Col>
         <Col>
-            {{ props.value.data['2023'] }}
+            {{ props.value.data['2023'] ?? '-' }}
         </Col>
         <Col>
-            {{ props.value.data['2024'] }}
+            {{ props.value.data['2024'] ?? '-' }}
         </Col>
     </Row>
     <template v-if="!hidden && props.value.children">
