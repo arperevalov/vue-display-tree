@@ -6,12 +6,9 @@ const props = defineProps<{isMain?: boolean, isHeader?: boolean, level?: number}
 </script>
 
 <template>
-    <th :class="`col${props.isMain ? ' col--main': ''}${props.isHeader ? ' col--header': ''}`" :style="{paddingLeft: `calc(1em * ${props.level})`}" v-if="isHeader">
+    <component :is="isHeader ? 'th' : 'td'" :class="`col${props.isMain ? ' col--main': ''}${props.isHeader ? ' col--header': ''}`" :style="{paddingLeft: `calc(1em * ${props.level})`}">
         <slot />
-    </th>
-    <td :class="`col${props.isMain ? ' col--main': ''}${props.isHeader ? ' col--header': ''}`" :style="{paddingLeft: `calc(1em * ${props.level})`}" v-else>
-        <slot />
-    </td>
+    </component>
 </template>
 
 <style scoped lang="scss">
