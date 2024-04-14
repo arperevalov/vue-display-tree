@@ -6,10 +6,10 @@ const props = defineProps<{isMain?: boolean, isHeader?: boolean, level?: number}
 </script>
 
 <template>
-    <th :class="`col${props.isMain ? ' col--main': ''}`" :style="{paddingLeft: `calc(1em * ${props.level})`}" v-if="isHeader">
+    <th :class="`col${props.isMain ? ' col--main': ''}${props.isHeader ? ' col--header': ''}`" :style="{paddingLeft: `calc(1em * ${props.level})`}" v-if="isHeader">
         <slot />
     </th>
-    <td :class="`col${props.isMain ? ' col--main': ''}`" :style="{paddingLeft: `calc(1em * ${props.level})`}" v-else>
+    <td :class="`col${props.isMain ? ' col--main': ''}${props.isHeader ? ' col--header': ''}`" :style="{paddingLeft: `calc(1em * ${props.level})`}" v-else>
         <slot />
     </td>
 </template>
@@ -22,9 +22,15 @@ const props = defineProps<{isMain?: boolean, isHeader?: boolean, level?: number}
     padding: 1em 1em;
     outline: 0.5px solid black;
     background: #fff;
+    text-align: right;
 
     &--main {
         width: 40%;
+        text-align: left;
+    }
+
+    &--header {
+        text-align: center;
     }
 }
 </style>
