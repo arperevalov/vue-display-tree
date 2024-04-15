@@ -8,7 +8,11 @@ SELECT
     level,
     MIN(base_plan_start_date) AS min_base_plan_start_date,
     MAX(base_plan_finish_date) AS max_base_plan_finish_date,
-    JSON_ARRAYAGG(JSON_OBJECT('contractor', contractor, 'plan_value', plan_value) ORDER BY plan_value DESC) AS contractors
+    JSON_ARRAYAGG(JSON_OBJECT('contractor', contractor, 'plan_value', plan_value)
+        ORDER BY
+            CASE WHEN contractor IS NULL THEN 1 ELSE 0 END,
+            plan_value DESC
+    ) AS contractors
 FROM 
     table_first_task
 GROUP BY 
